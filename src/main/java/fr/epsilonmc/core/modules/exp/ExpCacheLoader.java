@@ -12,7 +12,7 @@ import java.util.UUID;
 public class ExpCacheLoader extends CacheLoader<String, Integer> {
 
     @Override
-    public Integer load(String uuid) throws Exception {
+    public Integer load(String uuid) {
         Player player = Bukkit.getPlayer(UUID.fromString(uuid));
         Set<PermissionAttachmentInfo> effectivePermissions = player.getEffectivePermissions();
 
