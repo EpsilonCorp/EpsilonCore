@@ -1,7 +1,6 @@
 package fr.epsilonmc.api.module;
 
 import fr.epsilonmc.api.exception.EpsilonRuntimeException;
-import fr.epsilonmc.api.exception.ModuleRegisterException;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,5 +36,12 @@ public class ModuleFactory {
         moduleInfoMap.put(module.getClass(), moduleInfo);
 
         moduleInfo.handleRegistration();
+    }
+
+    public void unregisterAll() {
+        for (ModuleInfo<Object> moduleInfo : moduleInfoMap.values()) {
+            // TODO: unregister
+        }
+        moduleInfoMap.clear();
     }
 }

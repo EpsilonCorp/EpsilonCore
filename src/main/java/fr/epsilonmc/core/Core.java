@@ -28,4 +28,8 @@ public final class Core extends JavaPlugin {
         moduleFactory.registerModule(this, new SecretModule());
     }
 
+    @Override
+    public void onDisable() {
+        ModuleFactory.getInstance().unregisterAll();
+    }
 }
