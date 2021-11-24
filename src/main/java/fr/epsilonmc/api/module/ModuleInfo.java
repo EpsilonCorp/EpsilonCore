@@ -1,7 +1,9 @@
 package fr.epsilonmc.api.module;
 
 import fr.epsilonmc.api.command.*;
+import fr.epsilonmc.api.exception.ModuleRegisterException;
 import fr.epsilonmc.api.exception.UnknownEpsilonCommandException;
+import fr.epsilonmc.api.type.TypeConverter;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.Command;
@@ -17,16 +19,16 @@ import java.util.Optional;
 public class ModuleInfo {
 
     private final JavaPlugin plugin;
-    private final AbstractModule module;
+    private final EpsilonModule module;
 
     public void handleRegistration() {
         PluginManager pluginManager = plugin.getServer().getPluginManager();
 
-        for (Listener listener : module.getListeners()) {
+        for (Listener listener : TypeConverter.instantiateArray(module.listeners())) {
             pluginManager.registerEvents(listener, plugin);
         }
 
-        for (IEpsilonCommand command : module.getCommands()) {
+        for (IEpsilonCommand command : TypeConverter.instantiateArray(module.commands())) {
             Optional<EpsilonCommand> optionalCommand = CommandFinder.findCommandOnClass(command);
 
             if (optionalCommand.isPresent()) {
