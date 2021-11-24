@@ -1,32 +1,25 @@
 package fr.epsilonmc.core;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
-import be.seeseemelk.mockbukkit.ServerMock;
 import fr.epsilonmc.api.module.ModuleFactory;
-import fr.epsilonmc.core.modules.TestModule;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import fr.epsilonmc.mock.core.modules.test.TestModule;
+import org.junit.jupiter.api.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CoreTests {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class TestCore {
 
-    private ServerMock server;
     private Core core;
 
-    @Before
+    @BeforeAll
     public void setUp() {
-        server = MockBukkit.mock();
+        MockBukkit.mock();
         core = MockBukkit.load(Core.class);
     }
 
-    @After
-    public void tearDown() {
-        MockBukkit.unmock();
-    }
-
     @Test
+    @DisplayName("Test the module registration")
     public void testModuleRegistered() {
         ModuleFactory moduleFactory = ModuleFactory.getInstance();
         moduleFactory.registerModule(core, new TestModule());
@@ -35,5 +28,9 @@ public class CoreTests {
         assertEquals(42, moduleFactory.getModule(TestModule.class).getModule().validateRegistration());
     }
 
+    @AfterAll
+    public void tearDown() {
+        MockBukkit.unmock();
+    }
 
 }

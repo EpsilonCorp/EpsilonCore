@@ -1,4 +1,4 @@
-package fr.epsilonmc.core.modules;
+package fr.epsilonmc.mock.core.modules.test;
 
 import fr.epsilonmc.api.module.EpsilonModule;
 
