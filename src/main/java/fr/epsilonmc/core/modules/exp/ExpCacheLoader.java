@@ -20,7 +20,9 @@ public class ExpCacheLoader extends CacheLoader<String, Integer> {
         int higherMultiplier = -1;
         for (PermissionAttachmentInfo effectivePermission : effectivePermissions) {
             if (effectivePermission.getPermission().startsWith(Permissions.EXP_MULTIPLIER_PATTERN)) {
-                int multiplier = Integer.parseInt(effectivePermission.getPermission().substring(0, Permissions.EXP_MULTIPLIER_PATTERN.length()));
+                int multiplier = Integer.parseInt(effectivePermission.getPermission().substring(
+                        Permissions.EXP_MULTIPLIER_PATTERN.length()
+                ));
                 higherMultiplier = Math.max(higherMultiplier, multiplier);
             }
         }
