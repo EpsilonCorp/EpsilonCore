@@ -26,13 +26,7 @@ public class ModuleFactory {
     }
 
     public void registerModule(JavaPlugin plugin, Object module) {
-        Optional<EpsilonModule> optionalEpsilonModule = ModuleFinder.findModuleOnClass(module);
-        EpsilonModule epsilonModule;
-
-        if (!optionalEpsilonModule.isPresent()) {
-            throw new ModuleRegisterException("Module not found on class %s!", module.getClass().getName());
-        }
-        epsilonModule = optionalEpsilonModule.get();
+        EpsilonModule epsilonModule = ModuleFinder.findModuleOnClass(module);
 
         if (moduleInfoMap.containsKey(module.getClass())) {
             throw new EpsilonRuntimeException("Module %s already registered!", epsilonModule.name());
