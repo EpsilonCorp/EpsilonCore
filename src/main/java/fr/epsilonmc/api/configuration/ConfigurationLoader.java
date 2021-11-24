@@ -3,7 +3,8 @@ package fr.epsilonmc.api.configuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import fr.epsilonmc.api.io.FileOperations;
-import fr.epsilonmc.api.module.AbstractModule;
+import fr.epsilonmc.api.module.EpsilonModule;
+import fr.epsilonmc.api.module.ModuleFinder;
 import lombok.SneakyThrows;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,9 +13,10 @@ import java.io.File;
 
 public class ConfigurationLoader {
 
-    public static <T> T loadOrGenerate(JavaPlugin plugin, AbstractModule module, Class<? extends T> configurationClass) {
+    public static <T> T loadOrGenerate(JavaPlugin plugin, Object module, Class<? extends T> configurationClass) {
+        EpsilonModule epsilonModule = ModuleFinder.findModuleOnClass(module);
         File dataFolder = plugin.getDataFolder();
-        File moduleFileConfiguration = new File(dataFolder, module.getName() + ".json");
+        File moduleFileConfiguration = new File(dataFolder, epsilonModule.name() + ".json");
 
         generateFiles(dataFolder, moduleFileConfiguration);
 
@@ -22,9 +24,10 @@ public class ConfigurationLoader {
         return new Gson().fromJson(configurationBufferedReader, configurationClass);
     }
 
-    public static <T> void save(JavaPlugin plugin, AbstractModule module, T configuration) {
+    public static <T> void save(JavaPlugin plugin, Object module, T configuration) {
+        EpsilonModule epsilonModule = ModuleFinder.findModuleOnClass(module);
         File dataFolder = plugin.getDataFolder();
-        File moduleFileConfiguration = new File(dataFolder, module.getName() + ".json");
+        File moduleFileConfiguration = new File(dataFolder, epsilonModule.name() + ".json");
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         FileOperations.write(moduleFileConfiguration, gson.toJson(configuration));
