@@ -30,7 +30,7 @@ public class SecretSecurityListener implements Listener {
     private void validatePlayerCache(Cancellable event, Player player) {
         String uuid = player.getUniqueId().toString();
 
-        if (secretModule.getPlayerCache().contains(uuid))
+        if (getModule().getPlayerCache().contains(uuid))
             event.setCancelled(true);
     }
 
