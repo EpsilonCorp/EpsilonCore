@@ -13,12 +13,15 @@ import java.io.File;
 
 public class ConfigurationLoader {
 
+    @SneakyThrows
     public static <T> T loadOrGenerate(JavaPlugin plugin, Object module, Class<? extends T> configurationClass) {
         EpsilonModule epsilonModule = ModuleFinder.findModuleOnClass(module);
         File dataFolder = plugin.getDataFolder();
         File moduleFileConfiguration = new File(dataFolder, epsilonModule.name() + ".json");
 
-        generateFiles(dataFolder, moduleFileConfiguration);
+        if (generateFiles(dataFolder, moduleFileConfiguration)) {
+            return configurationClass.newInstance();
+        }
 
         BufferedReader configurationBufferedReader = FileOperations.getReader(moduleFileConfiguration);
         return new Gson().fromJson(configurationBufferedReader, configurationClass);
@@ -34,7 +37,7 @@ public class ConfigurationLoader {
     }
 
     @SneakyThrows
-    private static void generateFiles(File dataFolder, File moduleFileConfiguration) {
+    private static boolean generateFiles(File dataFolder, File moduleFileConfiguration) {
         if ((!dataFolder.exists() || (dataFolder.isFile() && dataFolder.delete())) && dataFolder.mkdir()) {
             // TODO: put logger instead of sout
             System.out.printf("%s created!\n", dataFolder.getPath());
@@ -43,7 +46,9 @@ public class ConfigurationLoader {
         if (!moduleFileConfiguration.exists() && moduleFileConfiguration.createNewFile()) {
             // TODO: put logger instead of sout
             System.out.printf("%s created!\n", moduleFileConfiguration.getPath());
+            return true;
         }
+        return false;
     }
 
 }
