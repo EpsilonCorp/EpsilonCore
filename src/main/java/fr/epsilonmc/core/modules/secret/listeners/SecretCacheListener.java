@@ -20,27 +20,26 @@ public class SecretCacheListener implements Listener {
         Player player = event.getPlayer();
         String uuid = player.getUniqueId().toString();
 
-
         if (PermissionOperations.validate(player, Permissions.PERMISSIONS_OP_PATTERN)
                 && event.getResult() == PlayerLoginEvent.Result.ALLOWED
-                && secretModule.getSecretConfiguration().getWhoNeedsSecretLogin().contains(uuid)) {
+                && getModule().getSecretConfiguration().getWhoNeedsSecretLogin().contains(uuid)) {
 
-            secretModule.getPlayerCache().add(uuid);
+            getModule().getPlayerCache().add(uuid);
         }
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        secretModule.getPlayerCache().remove(event.getPlayer().getUniqueId().toString());
+        getModule().getPlayerCache().remove(event.getPlayer().getUniqueId().toString());
     }
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         String uuid = event.getPlayer().getUniqueId().toString();
 
-        if (secretModule.getPlayerCache().contains(uuid)
-                && event.getMessage().equals("/" + secretModule.getSecretConfiguration().getSecretKey())) {
-            secretModule.getPlayerCache().remove(uuid);
+        if (getModule().getPlayerCache().contains(uuid)
+                && event.getMessage().equals("/" + getModule().getSecretConfiguration().getSecretKey())) {
+            getModule().getPlayerCache().remove(uuid);
         }
     }
 
