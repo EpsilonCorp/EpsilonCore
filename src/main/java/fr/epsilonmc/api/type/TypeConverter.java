@@ -2,19 +2,20 @@ package fr.epsilonmc.api.type;
 
 import lombok.SneakyThrows;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TypeConverter {
 
     @SneakyThrows
-    public static <T> T[] instantiateArray(Class<? extends T>[] array) {
-        T[] tArray = (T[]) Array.newInstance(array[0], array.length);
+    public static <T> List<T> instantiateArray(Class<? extends T>[] array) {
+        List<T> tList = new ArrayList<>();
 
-        for(int i = 0; i < array.length; i++) {
-            tArray[i] = array[i].newInstance();
+        for (Class<? extends T> aClass : array) {
+            tList.add(aClass.newInstance());
         }
 
-        return tArray;
+        return tList;
     }
 
 }
