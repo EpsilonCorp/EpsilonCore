@@ -1,4 +1,4 @@
-package fr.epsilonmc.core.modules.exp.listener;
+package fr.epsilonmc.core.modules.exp;
 
 import fr.epsilonmc.api.module.ModuleFactory;
 import fr.epsilonmc.core.modules.exp.ExpModule;
@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 
-public class PlayerExpChangeListener implements Listener {
+public class ExpChangeListener implements Listener {
 
     private ExpModule expModule;
 
