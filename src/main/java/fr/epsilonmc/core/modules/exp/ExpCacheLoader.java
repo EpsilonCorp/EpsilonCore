@@ -2,18 +2,15 @@ package fr.epsilonmc.core.modules.exp;
 
 import com.google.common.cache.CacheLoader;
 import fr.epsilonmc.core.Permissions;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import java.util.Set;
-import java.util.UUID;
 
-public class ExpCacheLoader extends CacheLoader<String, Integer> {
+public class ExpCacheLoader extends CacheLoader<Player, Integer> {
 
     @Override
-    public Integer load(String uuid) {
-        Player player = Bukkit.getPlayer(UUID.fromString(uuid));
+    public Integer load(Player player) {
         Set<PermissionAttachmentInfo> effectivePermissions = player.getEffectivePermissions();
 
 

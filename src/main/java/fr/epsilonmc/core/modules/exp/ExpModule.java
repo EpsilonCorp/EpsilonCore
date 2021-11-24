@@ -4,6 +4,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.LoadingCache;
 import fr.epsilonmc.api.module.EpsilonModule;
 import lombok.Getter;
+import org.bukkit.entity.Player;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,6 +12,6 @@ import java.util.concurrent.TimeUnit;
 public class ExpModule {
 
     @Getter
-    private final LoadingCache<String, Integer> playerCache = CacheBuilder.newBuilder().expireAfterWrite(10, TimeUnit.MINUTES).build(new ExpCacheLoader());
+    private final LoadingCache<Player, Integer> playerCache = CacheBuilder.newBuilder().expireAfterWrite(10, TimeUnit.MINUTES).build(new ExpCacheLoader());
 
 }
