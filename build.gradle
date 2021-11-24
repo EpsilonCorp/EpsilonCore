@@ -15,12 +15,17 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'com.github.MockBukkit:MockBukkit:v1.15-0.3.0'
 }
 
 def targetJavaVersion = 8
@@ -33,10 +38,9 @@ java {
     }
 }
 
+
 tasks.withType(JavaCompile).configureEach {
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        options.release = targetJavaVersion
-    }
+    options.encoding = 'UTF-8'
 }
 
 processResources {
