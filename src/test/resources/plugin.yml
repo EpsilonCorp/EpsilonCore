@@ -3,6 +3,9 @@ version: '${version}'
 main: fr.epsilonmc.core.Core
 authors: [ Lucas__Lks ]
 website: epsilonmc.fr
+messages:
+  permission-message: &permission-message "Vous n'êtes pas autorisé à faire ça."
+  silent-permission-message: &silent-permission-message ''
 commands:
   test:
 
