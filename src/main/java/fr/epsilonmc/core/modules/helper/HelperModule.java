@@ -13,7 +13,9 @@ public class HelperModule {
 
     @Getter
     private final Cache<Player, Long> playerRepairCache = new Cache2kBuilder<Player, Long>() {}
-            .expiryPolicy(new RepairExpiryPolicy())
+            .expiryPolicy(new RepairExpiryPolicy(Permissions.HELPER_COMMAND_REPAIR_PATTERN))
+            .keepDataAfterExpired(false)
+            .build();
             .keepDataAfterExpired(false)
             .build();
 
