@@ -23,5 +23,9 @@ commands:
     description: "Ouvrez une poubelle."
   invest:
     description: "Rejoindre le serveur Invest."
+  furnace:
+    description: "Faites fondre vos minerais."
+    permission: core.helper.furnace
+    permission-message: *permission-message
   test:
     description: 'Unit tests command'
