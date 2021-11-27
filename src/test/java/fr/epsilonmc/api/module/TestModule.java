@@ -17,7 +17,7 @@ public class TestModule {
         assertNotNull(epsilonModule);
         assertEquals("test", epsilonModule.name());
         assertEquals(0, epsilonModule.listeners().length);
-        assertEquals(0, epsilonModule.commands().length);
+        assertEquals(1, epsilonModule.commands().length);
     }
 
 

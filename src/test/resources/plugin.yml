@@ -1,0 +1,8 @@
+name: Core
+version: '${version}'
+main: fr.epsilonmc.core.Core
+authors: [ Lucas__Lks ]
+website: epsilonmc.fr
+commands:
+  test:
+
