@@ -1,6 +1,5 @@
 package fr.epsilonmc.mock.bukkit;
 
-import be.seeseemelk.mockbukkit.ServerMock;
 import be.seeseemelk.mockbukkit.entity.PlayerMock;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.permissions.PermissionAttachmentInfo;
@@ -15,14 +14,14 @@ import java.util.stream.Collectors;
 
 public class EpsilonPlayerMock extends PlayerMock {
 
-    public EpsilonPlayerMock(ServerMock server, String name) {
-        super(server, name);
+    public EpsilonPlayerMock(String name) {
+        super(name);
     }
 
     @Override
     public @NotNull Set<PermissionAttachmentInfo> getEffectivePermissions() {
         try {
-            Field permissionAttachmentsField = getClass().getSuperclass().getSuperclass().getSuperclass().getDeclaredField("permissionAttachments");
+            Field permissionAttachmentsField = getClass().getSuperclass().getSuperclass().getDeclaredField("permissionAttachments");
             permissionAttachmentsField.setAccessible(true);
             return ((Set<PermissionAttachment>) permissionAttachmentsField.get(this))
                     .stream()
@@ -37,7 +36,7 @@ public class EpsilonPlayerMock extends PlayerMock {
                         );
                     }).collect(Collectors.toSet());
         } catch (NoSuchFieldException | IllegalAccessException exception) {
-//            exception.printStackTrace();
+            exception.printStackTrace();
         }
         return Collections.emptySet();
     }

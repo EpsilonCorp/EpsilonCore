@@ -26,7 +26,7 @@ public class TestExp {
     @Test
     @DisplayName("Test if exp multiplier works fine")
     public void testExpMultiplier() {
-        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
+        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
         epsilonPlayerMock.addAttachment(core, Permissions.EXP_MULTIPLIER_PATTERN + "79", true);
         PluginManager pluginManager = core.getServer().getPluginManager();
 
@@ -38,7 +38,7 @@ public class TestExp {
 
     @AfterAll
     public void tearDown() {
-        MockBukkit.unmock();
+        MockBukkit.unload();
     }
 
 }

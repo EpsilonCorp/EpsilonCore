@@ -30,7 +30,7 @@ public class TestCore {
 
     @AfterAll
     public void tearDown() {
-        MockBukkit.unmock();
+        MockBukkit.unload();
     }
 
 }

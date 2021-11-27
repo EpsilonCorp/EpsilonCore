@@ -28,8 +28,8 @@ public class TestSecretCache {
     @Test
     @DisplayName("Test if Secret Cache works fine by using player quit")
     public void testSecretCacheByQuit() {
-        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
         SecretModule secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
+        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
         epsilonPlayerMock.setOp(true);
 
         PlayerLoginEvent playerLoginEvent = new PlayerLoginEvent(
@@ -37,7 +37,8 @@ public class TestSecretCache {
                 "",
                 null,
                 PlayerLoginEvent.Result.ALLOWED,
-                ""
+                "",
+                null
         );
         core.getServer().getPluginManager().callEvent(playerLoginEvent);
         assertTrue(secretModule.getPlayerCache().contains("253a3fe5-4bce-3192-bf99-6d0f5a0478d1"));
@@ -50,8 +51,8 @@ public class TestSecretCache {
     @Test
     @DisplayName("Test if Secret Cache works fine by using chat secret key")
     public void testSecretCacheByChatSecretKey() {
-        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
         SecretModule secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
+        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
         epsilonPlayerMock.setOp(true);
 
         PlayerLoginEvent playerLoginEvent = new PlayerLoginEvent(
@@ -59,7 +60,8 @@ public class TestSecretCache {
                 "",
                 null,
                 PlayerLoginEvent.Result.ALLOWED,
-                ""
+                "",
+                null
         );
         core.getServer().getPluginManager().callEvent(playerLoginEvent);
         assertTrue(secretModule.getPlayerCache().contains("253a3fe5-4bce-3192-bf99-6d0f5a0478d1"));
@@ -71,6 +73,6 @@ public class TestSecretCache {
 
     @AfterAll
     public void tearDown() {
-        MockBukkit.unmock();
+        MockBukkit.unload();
     }
 }

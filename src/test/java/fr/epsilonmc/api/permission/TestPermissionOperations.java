@@ -24,7 +24,7 @@ public class TestPermissionOperations {
     @Test
     @DisplayName("Test if validate method is working")
     public void testValidate() {
-        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
+        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
         epsilonPlayerMock.addAttachment(core, Permissions.PERMISSIONS_OP_PATTERN + ".test", true);
 
         assertTrue(PermissionOperations.validate(epsilonPlayerMock, Permissions.PERMISSIONS_OP_PATTERN));
@@ -33,7 +33,7 @@ public class TestPermissionOperations {
 
     @AfterAll
     public void tearDown() {
-        MockBukkit.unmock();
+        MockBukkit.unload();
     }
 
 }

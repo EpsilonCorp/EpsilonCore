@@ -28,14 +28,14 @@ public class TestCommand {
         ModuleRegistry moduleRegistry = ModuleRegistry.getInstance();
         moduleRegistry.registerModule(core, new TestModule());
 
-        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
+        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
         assertTrue(epsilonPlayerMock.performCommand("test"));
         epsilonPlayerMock.assertSaid("test");
     }
 
     @AfterAll
     public void tearDown() {
-        MockBukkit.unmock();
+        MockBukkit.unload();
     }
 
 

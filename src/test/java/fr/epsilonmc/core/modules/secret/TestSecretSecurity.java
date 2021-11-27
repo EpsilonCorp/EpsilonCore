@@ -28,7 +28,7 @@ public class TestSecretSecurity {
     @Test
     @DisplayName("Test if Secret Security works fine")
     public void testSecretSecurity() {
-        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
+        EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
         SecretModule secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
         PluginManager pluginManager = core.getServer().getPluginManager();
 
@@ -42,6 +42,6 @@ public class TestSecretSecurity {
 
     @AfterAll
     public void tearDown() {
-        MockBukkit.unmock();
+        MockBukkit.unload();
     }
 }
