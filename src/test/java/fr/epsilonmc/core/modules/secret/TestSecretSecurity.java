@@ -5,8 +5,6 @@ import be.seeseemelk.mockbukkit.ServerMock;
 import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
-import org.bukkit.event.Event;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.PluginManager;
 import org.junit.jupiter.api.*;
