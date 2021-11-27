@@ -6,4 +6,6 @@ public class Permissions {
 
     public static final String EXP_MULTIPLIER_PATTERN = "core.exp.multiplier.";
 
+    public static final String HELPER_COMMAND_REPAIR_PATTERN = "core.helper.repair.";
+
 }
