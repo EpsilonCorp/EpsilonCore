@@ -9,15 +9,15 @@ messages:
 commands:
   repair:
     description: "Réparez l'objet en main."
-    usage: '/repair'
     permission: core.helper.repair
     permission-message: *permission-message
     aliases:
       - fix
   repairall:
     description: "Réparez tout votre inventaire."
-    usage: '/repairall'
     permission: core.helper.repair.all
     permission-message: *permission-message
     aliases:
       - fixall
+  poubelle:
+    description: "Ouvrez une poubelle."
