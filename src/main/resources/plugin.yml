@@ -27,3 +27,7 @@ commands:
     description: "Faites fondre vos minerais."
     permission: core.helper.furnace
     permission-message: *permission-message
+  enchantment:
+    description: "Ouvrez une table d'enchantement."
+    permission: core.helper.enchantment
+    permission-message: *permission-message
