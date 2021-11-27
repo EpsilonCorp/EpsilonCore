@@ -15,4 +15,5 @@ commands:
     aliases:
       - fix
   test:
+    description: 'Unit tests command'
 
