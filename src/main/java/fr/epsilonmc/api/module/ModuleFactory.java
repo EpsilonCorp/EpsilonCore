@@ -2,6 +2,8 @@ package fr.epsilonmc.api.module;
 
 import fr.epsilonmc.api.exception.EpsilonRuntimeException;
 import lombok.Getter;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -40,8 +42,9 @@ public class ModuleFactory {
 
     public void unregisterAll() {
         for (ModuleInfo<Object> moduleInfo : moduleInfoMap.values()) {
-            // TODO: unregister
+            HandlerList.unregisterAll(moduleInfo.getPlugin());
         }
+        
         moduleInfoMap.clear();
     }
 }
