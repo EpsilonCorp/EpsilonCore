@@ -20,8 +20,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
-    compileOnly 'org.projectlombok:lombok:1.18.22'
+    implementation files('libs/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar')
+    implementation 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     implementation 'org.cache2k:cache2k-core:2.4.1.Final'
 

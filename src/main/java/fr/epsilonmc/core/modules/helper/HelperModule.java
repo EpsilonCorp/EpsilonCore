@@ -4,10 +4,7 @@ import fr.epsilonmc.api.configuration.ConfigurationLoader;
 import fr.epsilonmc.api.module.EpsilonModule;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.core.Permissions;
-import fr.epsilonmc.core.modules.helper.commands.BinCommand;
-import fr.epsilonmc.core.modules.helper.commands.EnchantmentCommand;
-import fr.epsilonmc.core.modules.helper.commands.FurnaceCommand;
-import fr.epsilonmc.core.modules.helper.commands.InvestCommand;
+import fr.epsilonmc.core.modules.helper.commands.*;
 import fr.epsilonmc.core.modules.helper.commands.repair.RepairAllCommand;
 import fr.epsilonmc.core.modules.helper.commands.repair.RepairInHandCommand;
 import fr.epsilonmc.core.modules.helper.commands.repair.RepairExpiryPolicy;
@@ -25,7 +22,8 @@ import org.cache2k.Cache2kBuilder;
                 BinCommand.class,
                 InvestCommand.class,
                 FurnaceCommand.class,
-                EnchantmentCommand.class
+                EnchantmentCommand.class,
+                AnvilCommand.class
         })
 public class HelperModule {
 

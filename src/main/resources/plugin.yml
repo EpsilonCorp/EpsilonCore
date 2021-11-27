@@ -31,3 +31,9 @@ commands:
     description: "Ouvrez une table d'enchantement."
     permission: core.helper.enchantment
     permission-message: *permission-message
+  anvil:
+    description: "Ouvrez une enclume."
+    permission: core.helper.anvil
+    permission-message: *permission-message
+    aliases:
+      - enclume
