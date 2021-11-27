@@ -30,7 +30,6 @@ public class TestExp {
         epsilonPlayerMock.addAttachment(core, Permissions.EXP_MULTIPLIER_PATTERN + "79", true);
         PluginManager pluginManager = core.getServer().getPluginManager();
 
-        // Only 1 event is necessary because all the others are the same
         PlayerExpChangeEvent playerExpChangeEvent = new PlayerExpChangeEvent(epsilonPlayerMock, 23);
         pluginManager.callEvent(playerExpChangeEvent);
         assertEquals(Math.floor(23 * 1.79), playerExpChangeEvent.getAmount());
