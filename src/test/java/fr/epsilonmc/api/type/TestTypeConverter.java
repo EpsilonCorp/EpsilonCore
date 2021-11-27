@@ -1,6 +1,5 @@
 package fr.epsilonmc.api.type;
 
-import fr.epsilonmc.api.type.TypeConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,5 +21,13 @@ public class TestTypeConverter {
     }
 
     public static class TestType {}
+
+    @Test
+    @DisplayName("Test transform int to time")
+    public void testIntToTime() {
+        assertEquals("1h 0m et 0s", TypeConverter.intToTime(3600));
+        assertEquals("1m et 0s", TypeConverter.intToTime(60));
+        assertEquals("10s", TypeConverter.intToTime(10));
+    }
 
 }

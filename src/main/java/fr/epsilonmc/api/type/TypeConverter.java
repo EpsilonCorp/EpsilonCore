@@ -18,4 +18,20 @@ public class TypeConverter {
         return tList;
     }
 
+    public static String intToTime(int timeInSeconds) {
+        int hours = timeInSeconds / 3_600;
+        int minutes = (timeInSeconds - hours * 3_600) / 60;
+        int seconds = timeInSeconds - hours * 3_600 - minutes * 60;
+
+        String hoursTxt = hours + "h";
+        String minutesTxt = minutes + "m";
+        String secondsTxt = seconds + "s";
+
+        return String.format(
+                "%s%s%s",
+                hours != 0 ? hoursTxt + " " : "",
+                (hours != 0 || minutes != 0) ? minutesTxt + " et " : "",
+                secondsTxt
+        );
+    }
 }
