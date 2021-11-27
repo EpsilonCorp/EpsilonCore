@@ -2,6 +2,7 @@ package fr.epsilonmc.core;
 
 import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.core.modules.exp.ExpModule;
+import fr.epsilonmc.core.modules.helper.HelperModule;
 import fr.epsilonmc.core.modules.secret.SecretModule;
 import lombok.Getter;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -26,6 +27,7 @@ public final class Core extends JavaPlugin {
         ModuleRegistry moduleRegistry = ModuleRegistry.getInstance();
         moduleRegistry.registerModule(this, new ExpModule());
         moduleRegistry.registerModule(this, new SecretModule());
+        moduleRegistry.registerModule(this, new HelperModule());
     }
 
     @Override
