@@ -2,7 +2,7 @@ package fr.epsilonmc.api.command;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
-import fr.epsilonmc.api.module.ModuleFactory;
+import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import fr.epsilonmc.mock.core.modules.test.TestModule;
@@ -25,8 +25,8 @@ public class TestCommand {
     @Test
     @DisplayName("Test the command api")
     public void testCommandApi() {
-        ModuleFactory moduleFactory = ModuleFactory.getInstance();
-        moduleFactory.registerModule(core, new TestModule());
+        ModuleRegistry moduleRegistry = ModuleRegistry.getInstance();
+        moduleRegistry.registerModule(core, new TestModule());
 
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
         assertTrue(epsilonPlayerMock.performCommand("test"));

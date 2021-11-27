@@ -1,6 +1,6 @@
 package fr.epsilonmc.core.modules.secret.listeners;
 
-import fr.epsilonmc.api.module.ModuleFactory;
+import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.core.modules.secret.SecretModule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
@@ -36,7 +36,7 @@ public class SecretSecurityListener implements Listener {
 
     private SecretModule getModule() {
         if (secretModule == null) {
-            secretModule = ModuleFactory.getInstance().getModule(SecretModule.class).getModule();
+            secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
         }
 
         return secretModule;

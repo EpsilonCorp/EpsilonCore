@@ -1,6 +1,6 @@
 package fr.epsilonmc.core;
 
-import fr.epsilonmc.api.module.ModuleFactory;
+import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.core.modules.exp.ExpModule;
 import fr.epsilonmc.core.modules.secret.SecretModule;
 import lombok.Getter;
@@ -23,13 +23,13 @@ public final class Core extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        ModuleFactory moduleFactory = ModuleFactory.getInstance();
-        moduleFactory.registerModule(this, new ExpModule());
-        moduleFactory.registerModule(this, new SecretModule());
+        ModuleRegistry moduleRegistry = ModuleRegistry.getInstance();
+        moduleRegistry.registerModule(this, new ExpModule());
+        moduleRegistry.registerModule(this, new SecretModule());
     }
 
     @Override
     public void onDisable() {
-        ModuleFactory.getInstance().unregisterAll();
+        ModuleRegistry.getInstance().unregisterAll();
     }
 }

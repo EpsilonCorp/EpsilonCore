@@ -2,7 +2,7 @@ package fr.epsilonmc.core.modules.secret;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
-import fr.epsilonmc.api.module.ModuleFactory;
+import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import org.bukkit.event.Event;
@@ -29,7 +29,7 @@ public class TestSecretSecurity {
     @DisplayName("Test if Secret Security works fine")
     public void testSecretSecurity() {
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
-        SecretModule secretModule = ModuleFactory.getInstance().getModule(SecretModule.class).getModule();
+        SecretModule secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
         PluginManager pluginManager = core.getServer().getPluginManager();
 
         secretModule.getPlayerCache().add(epsilonPlayerMock.getUniqueId().toString());

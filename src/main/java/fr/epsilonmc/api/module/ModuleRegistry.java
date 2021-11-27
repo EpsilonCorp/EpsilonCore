@@ -3,17 +3,16 @@ package fr.epsilonmc.api.module;
 import fr.epsilonmc.api.exception.EpsilonRuntimeException;
 import lombok.Getter;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class ModuleFactory {
+public class ModuleRegistry {
 
-    private ModuleFactory() {}
-    @Getter private final static ModuleFactory instance = new ModuleFactory();
+    private ModuleRegistry() {}
+    @Getter private final static ModuleRegistry instance = new ModuleRegistry();
 
     private final Map<Class<?>, ModuleInfo<Object>> moduleInfoMap = new HashMap<>();
 

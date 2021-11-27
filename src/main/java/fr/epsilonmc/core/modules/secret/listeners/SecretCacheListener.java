@@ -1,6 +1,6 @@
 package fr.epsilonmc.core.modules.secret.listeners;
 
-import fr.epsilonmc.api.module.ModuleFactory;
+import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.api.permission.PermissionOperations;
 import fr.epsilonmc.core.Permissions;
 import fr.epsilonmc.core.modules.secret.SecretModule;
@@ -46,7 +46,7 @@ public class SecretCacheListener implements Listener {
 
     private SecretModule getModule() {
         if (secretModule == null) {
-            secretModule = ModuleFactory.getInstance().getModule(SecretModule.class).getModule();
+            secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
         }
 
         return secretModule;

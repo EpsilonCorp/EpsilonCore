@@ -1,7 +1,7 @@
 package fr.epsilonmc.core;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
-import fr.epsilonmc.api.module.ModuleFactory;
+import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.mock.core.modules.test.TestModule;
 import org.junit.jupiter.api.*;
 
@@ -21,11 +21,11 @@ public class TestCore {
     @Test
     @DisplayName("Test the module registration")
     public void testModuleRegistered() {
-        ModuleFactory moduleFactory = ModuleFactory.getInstance();
-        moduleFactory.registerModule(core, new TestModule());
+        ModuleRegistry moduleRegistry = ModuleRegistry.getInstance();
+        moduleRegistry.registerModule(core, new TestModule());
 
-        assertEquals(TestModule.class, moduleFactory.getModule(TestModule.class).getModule().getClass());
-        assertEquals(42, moduleFactory.getModule(TestModule.class).getModule().validateRegistration());
+        assertEquals(TestModule.class, moduleRegistry.getModule(TestModule.class).getModule().getClass());
+        assertEquals(42, moduleRegistry.getModule(TestModule.class).getModule().validateRegistration());
     }
 
     @AfterAll

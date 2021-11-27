@@ -2,7 +2,7 @@ package fr.epsilonmc.core.modules.secret;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
-import fr.epsilonmc.api.module.ModuleFactory;
+import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.api.thread.ThreadSafe;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
@@ -28,8 +28,8 @@ public class TestSecretCache {
     @Test
     @DisplayName("Test if Secret Cache works fine by using player quit")
     public void testSecretCacheByQuit() {
-        SecretModule secretModule = ModuleFactory.getInstance().getModule(SecretModule.class).getModule();
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
+        SecretModule secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
         epsilonPlayerMock.setOp(true);
 
         PlayerLoginEvent playerLoginEvent = new PlayerLoginEvent(
@@ -50,8 +50,8 @@ public class TestSecretCache {
     @Test
     @DisplayName("Test if Secret Cache works fine by using chat secret key")
     public void testSecretCacheByChatSecretKey() {
-        SecretModule secretModule = ModuleFactory.getInstance().getModule(SecretModule.class).getModule();
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock(server, "Lucas__Lks");
+        SecretModule secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
         epsilonPlayerMock.setOp(true);
 
         PlayerLoginEvent playerLoginEvent = new PlayerLoginEvent(
