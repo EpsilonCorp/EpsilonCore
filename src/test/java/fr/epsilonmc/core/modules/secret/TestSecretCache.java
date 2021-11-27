@@ -6,13 +6,12 @@ import fr.epsilonmc.api.module.ModuleFactory;
 import fr.epsilonmc.api.thread.ThreadSafe;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.RegisteredListener;
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestSecretCache {
