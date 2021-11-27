@@ -21,3 +21,5 @@ commands:
     permission-message: *permission-message
     aliases:
       - fixall
+  poubelle:
+    description: "Ouvrez une poubelle."
