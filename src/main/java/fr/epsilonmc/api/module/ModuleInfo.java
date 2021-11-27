@@ -35,19 +35,7 @@ public class ModuleInfo<T> {
             if (optionalCommand.isPresent()) {
                 EpsilonCommand epsilonCommand = optionalCommand.get();
                 plugin.getCommand(epsilonCommand.name())
-                        .setExecutor((CommandSender bukkitSender, Command bukkitCommand, String label, String[] args) -> {
-                            Sender sender = new Sender(bukkitSender);
-                            Arguments arguments = new Arguments(args);
-                            // TODO: CommandInfo from plugin.yml
-                            CommandInfo commandInfo = new CommandInfo(
-                                    epsilonCommand.name(),
-                                    null,
-                                    null,
-                                    epsilonCommand.playerOnly()
-                            );
-
-                            return command.execute(sender, arguments, commandInfo);
-                        });
+                        .setExecutor(new EpsilonCommandExecutor(command, epsilonCommand));
             } else {
                 throw new UnknownEpsilonCommandException("Unknown command on %s!", command.getClass().getName());
             }
