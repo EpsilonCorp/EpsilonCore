@@ -20,7 +20,7 @@ public class SecretCacheListener implements Listener {
         Player player = event.getPlayer();
         String uuid = player.getUniqueId().toString();
 
-        if (PermissionOperations.validate(player, Permissions.PERMISSIONS_OP_PATTERN)
+        if (PermissionOperations.validate(player, Permissions.OP_PATTERN)
                 && event.getResult() == PlayerLoginEvent.Result.ALLOWED
                 && getModule().getSecretConfiguration().getWhoNeedsSecretLogin().contains(uuid)
                 && !getModule().getPlayerCache().contains(uuid)){

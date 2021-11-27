@@ -25,9 +25,9 @@ public class TestPermissionOperations {
     @DisplayName("Test if validate method is working")
     public void testValidate() {
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
-        epsilonPlayerMock.addAttachment(core, Permissions.PERMISSIONS_OP_PATTERN + ".test", true);
+        epsilonPlayerMock.addAttachment(core, Permissions.OP_PATTERN + ".test", true);
 
-        assertTrue(PermissionOperations.validate(epsilonPlayerMock, Permissions.PERMISSIONS_OP_PATTERN));
+        assertTrue(PermissionOperations.validate(epsilonPlayerMock, Permissions.OP_PATTERN));
     }
 
 
