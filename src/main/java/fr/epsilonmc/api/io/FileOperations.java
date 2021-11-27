@@ -26,6 +26,7 @@ public class FileOperations {
             stringBuilder.append(line);
         }
 
+        bufferedReader.close();
         return stringBuilder.toString();
     }
 
