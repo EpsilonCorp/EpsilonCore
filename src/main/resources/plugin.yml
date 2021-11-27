@@ -14,3 +14,10 @@ commands:
     permission-message: *permission-message
     aliases:
       - fix
+  repairall:
+    description: "Réparez tout votre inventaire."
+    usage: '/repairall'
+    permission: core.helper.repair.all
+    permission-message: *permission-message
+    aliases:
+      - fixall
