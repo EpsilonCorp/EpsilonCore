@@ -3,6 +3,7 @@ package fr.epsilonmc.core.modules.helper;
 import fr.epsilonmc.api.module.EpsilonModule;
 import fr.epsilonmc.core.Permissions;
 import fr.epsilonmc.core.modules.helper.commands.BinCommand;
+import fr.epsilonmc.core.modules.helper.commands.InvestCommand;
 import fr.epsilonmc.core.modules.helper.commands.repair.RepairAllCommand;
 import fr.epsilonmc.core.modules.helper.commands.repair.RepairInHandCommand;
 import fr.epsilonmc.core.modules.helper.commands.repair.RepairExpiryPolicy;
@@ -16,7 +17,8 @@ import org.cache2k.Cache2kBuilder;
         commands = {
                 RepairInHandCommand.class,
                 RepairAllCommand.class,
-                BinCommand.class
+                BinCommand.class,
+                InvestCommand.class
         })
 public class HelperModule {
 

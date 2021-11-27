@@ -21,3 +21,5 @@ commands:
       - fixall
   poubelle:
     description: "Ouvrez une poubelle."
+  invest:
+    description: "Rejoindre le serveur Invest."

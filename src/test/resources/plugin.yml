@@ -21,5 +21,7 @@ commands:
       - fixall
   poubelle:
     description: "Ouvrez une poubelle."
+  invest:
+    description: "Rejoindre le serveur Invest."
   test:
     description: 'Unit tests command'
