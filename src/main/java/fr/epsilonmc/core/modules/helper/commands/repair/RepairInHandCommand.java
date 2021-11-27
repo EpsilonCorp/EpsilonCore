@@ -8,7 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class RepairCommand implements IEpsilonCommand {
+public class RepairInHandCommand implements IEpsilonCommand {
 
     private HelperModule helperModule;
 
@@ -21,21 +21,16 @@ public class RepairCommand implements IEpsilonCommand {
 
         Player player = sender.getPlayer();
         ItemStack itemStack = player.getItemInHand();
-        Material material;
 
         if (helperModule.getPlayerRepairCache().containsKey(sender.getPlayer())) {
             return chatAndStop(sender, "&cAttendez encore avant de relancer un repair.");
         }
 
-        if (itemStack == null
-                || (material = itemStack.getType()) == Material.AIR
-                || material.isBlock()
-                || material.getMaxDurability() < 1) {
+        if (!RepairOperations.repair(itemStack)) {
             return chatAndStop(sender, "&cCet item n'est pas réparable.");
         }
 
-        itemStack.setDurability((short) 0);
-        helperModule.getPlayerRepairCache().put(sender.getPlayer(), System.currentTimeMillis());
+        helperModule.getPlayerRepairCache().put(player, System.currentTimeMillis());
         return chatAndStop(sender, "&aL'item dans votre main vient d'être réparé !");
     }
 
