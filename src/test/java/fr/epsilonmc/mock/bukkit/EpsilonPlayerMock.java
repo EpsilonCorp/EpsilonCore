@@ -1,6 +1,8 @@
 package fr.epsilonmc.mock.bukkit;
 
 import be.seeseemelk.mockbukkit.entity.PlayerMock;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.jetbrains.annotations.NotNull;
@@ -13,6 +15,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class EpsilonPlayerMock extends PlayerMock {
+
+    @Getter @Setter
+    private EpsilonPlayerMock killer;
 
     public EpsilonPlayerMock(String name) {
         super(name);
