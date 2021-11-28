@@ -1,6 +1,7 @@
 package fr.epsilonmc.core;
 
 import fr.epsilonmc.api.module.ModuleRegistry;
+import fr.epsilonmc.core.modules.death.DeathModule;
 import fr.epsilonmc.core.modules.exp.ExpModule;
 import fr.epsilonmc.core.modules.helper.HelperModule;
 import fr.epsilonmc.core.modules.secret.SecretModule;
@@ -28,6 +29,7 @@ public final class Core extends JavaPlugin {
         moduleRegistry.registerModule(this, new ExpModule());
         moduleRegistry.registerModule(this, new SecretModule());
         moduleRegistry.registerModule(this, new HelperModule());
+        moduleRegistry.registerModule(this, new DeathModule());
     }
 
     @Override
