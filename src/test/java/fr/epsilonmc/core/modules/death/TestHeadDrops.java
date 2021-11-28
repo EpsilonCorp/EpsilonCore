@@ -40,9 +40,7 @@ public class TestHeadDrops {
                 0,
                 ""
         );
-        RuntimeException runtimeException = assertThrows(RuntimeException.class, () -> {
-            core.getServer().getPluginManager().callEvent(playerDeathEvent);
-        });
+        RuntimeException runtimeException = assertThrows(RuntimeException.class, () -> core.getServer().getPluginManager().callEvent(playerDeathEvent));
         assertEquals(InvocationTargetException.class.getName(), runtimeException.getMessage());
     }
 
