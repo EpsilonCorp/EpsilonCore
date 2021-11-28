@@ -29,6 +29,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testImplementation 'org.jetbrains:annotations:22.0.0'
     testImplementation 'com.github.EpsilonCorp:MockBukkit:Epsilon'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
 
 def targetJavaVersion = 8
