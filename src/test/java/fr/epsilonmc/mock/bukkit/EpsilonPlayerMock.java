@@ -3,6 +3,9 @@ package fr.epsilonmc.mock.bukkit;
 import be.seeseemelk.mockbukkit.entity.PlayerMock;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Bukkit;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.jetbrains.annotations.NotNull;
@@ -44,5 +47,14 @@ public class EpsilonPlayerMock extends PlayerMock {
             exception.printStackTrace();
         }
         return Collections.emptySet();
+    }
+
+    @Override
+    public void chat(String msg) {
+        AsyncPlayerChatEvent eventAsync = new AsyncPlayerChatEvent(false, this, msg, Collections.emptySet());
+        PlayerChatEvent eventSync = new PlayerChatEvent(this, msg);
+
+        Bukkit.getPluginManager().callEvent(eventAsync);
+        Bukkit.getPluginManager().callEvent(eventSync);
     }
 }
