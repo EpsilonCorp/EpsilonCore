@@ -2,6 +2,7 @@ package fr.epsilonmc.core.modules.death.listeners;
 
 import fr.epsilonmc.api.io.ChatOperations;
 import fr.epsilonmc.api.type.TypeParser;
+import fr.epsilonmc.core.Variables;
 import fr.epsilonmc.core.modules.death.DeathModule;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -33,8 +34,8 @@ public class KillTrackerListener implements Listener {
             List<String> lore = itemStack.getItemMeta().getLore();
 
             for (String line : lore) {
-                if (line.startsWith(DeathModule.KILLS_COUNT)) {
-                    return TypeParser.intTryParse(line.substring(DeathModule.KILLS_COUNT.length()), 0);
+                if (line.startsWith(Variables.DEATH_KILLS_COUNT)) {
+                    return TypeParser.intTryParse(line.substring(Variables.DEATH_KILLS_COUNT.length()), 0);
                 }
             }
         }
@@ -47,8 +48,8 @@ public class KillTrackerListener implements Listener {
             List<String> lore = itemStack.getItemMeta().getLore();
 
             for (String line : lore) {
-                if (line.startsWith(DeathModule.KILLS_COUNT)) {
-                    lore.set(lore.indexOf(line), DeathModule.KILLS_COUNT + killsCount);
+                if (line.startsWith(Variables.DEATH_KILLS_COUNT)) {
+                    lore.set(lore.indexOf(line), Variables.DEATH_KILLS_COUNT + killsCount);
                 }
             }
 

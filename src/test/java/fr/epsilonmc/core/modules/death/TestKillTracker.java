@@ -4,6 +4,7 @@ import be.seeseemelk.mockbukkit.MockBukkit;
 import fr.epsilonmc.api.external.ItemBuilder;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.core.Permissions;
+import fr.epsilonmc.core.Variables;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import org.bukkit.Material;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -36,7 +37,7 @@ public class TestKillTracker {
         epsilonPlayerMockKilled.setKiller(epsilonPlayerMockKiller);
 
         ItemStack weapon = new ItemBuilder(Material.DIAMOND_SWORD)
-                .setLore(DeathModule.KILLS_COUNT + 2)
+                .setLore(Variables.DEATH_KILLS_COUNT + 2)
                 .toItemStack();
         epsilonPlayerMockKiller.setItemInHand(weapon);
 
@@ -48,7 +49,7 @@ public class TestKillTracker {
         );
         core.getServer().getPluginManager().callEvent(playerDeathEvent);
 
-        assertEquals(DeathModule.KILLS_COUNT + 3, playerDeathEvent.getEntity().getKiller().getItemInHand().getItemMeta().getLore().get(0));
+        assertEquals(Variables.DEATH_KILLS_COUNT + 3, playerDeathEvent.getEntity().getKiller().getItemInHand().getItemMeta().getLore().get(0));
     }
 
     @AfterAll
