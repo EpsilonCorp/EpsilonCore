@@ -41,10 +41,10 @@ public class TestRepairCommand {
 
         assertEquals(10, epsilonPlayerMock.getItemInHand().getDurability());
         epsilonPlayerMock.performCommand("repair");
-        epsilonPlayerMock.assertSaid(ChatOperations.translateColorCode(Variables.CHAT_EPSILON_PREFIX+"&aL'item dans votre main vient d'être réparé !"));
+        epsilonPlayerMock.assertSaid(ChatOperations.translateColorCode(Variables.MESSAGE_EPSILON_PREFIX +"&aL'item dans votre main vient d'être réparé !"));
         assertEquals(0, epsilonPlayerMock.getItemInHand().getDurability());
         epsilonPlayerMock.performCommand("repair");
-        epsilonPlayerMock.assertSaid(ChatOperations.translateColorCode(Variables.CHAT_EPSILON_PREFIX+"&cAttendez encore avant de relancer un repair."));
+        epsilonPlayerMock.assertSaid(ChatOperations.translateColorCode(Variables.MESSAGE_EPSILON_PREFIX +"&cAttendez encore avant de relancer un repair."));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class TestRepairCommand {
         assertEquals(10, inventory.getItem(16).getDurability());
         assertEquals(10, inventory.getItem(17).getDurability());
         epsilonPlayerMock.performCommand("repairall");
-        epsilonPlayerMock.assertSaid(ChatOperations.translateColorCode(Variables.CHAT_EPSILON_PREFIX+"&aLes items de votre inventaire viennent d'être réparés !"));
+        epsilonPlayerMock.assertSaid(ChatOperations.translateColorCode(Variables.MESSAGE_EPSILON_PREFIX +"&aLes items de votre inventaire viennent d'être réparés !"));
         assertEquals(0, inventory.getItem(15).getDurability());
         assertEquals(0, inventory.getItem(16).getDurability());
         assertEquals(0, inventory.getItem(17).getDurability());

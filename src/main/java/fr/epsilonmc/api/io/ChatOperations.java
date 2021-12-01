@@ -8,7 +8,7 @@ public class ChatOperations {
 
     public static void sendPrefixedAndTranslated(CommandSender commandSender, String txt, Object... objects) {
         commandSender.sendMessage(translateColorCode(
-                Variables.CHAT_EPSILON_PREFIX + txt,
+                Variables.MESSAGE_EPSILON_PREFIX + txt,
                 objects
         ));
     }
