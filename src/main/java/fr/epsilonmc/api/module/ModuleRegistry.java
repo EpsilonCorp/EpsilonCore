@@ -1,10 +1,15 @@
 package fr.epsilonmc.api.module;
 
+import fr.epsilonmc.api.configuration.ConfigurationLoader;
+import fr.epsilonmc.api.configuration.EpsilonConfiguration;
 import fr.epsilonmc.api.exception.EpsilonRuntimeException;
+import fr.epsilonmc.core.Core;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -39,9 +44,19 @@ public class ModuleRegistry {
         moduleInfo.handleRegistration();
     }
 
+    @SneakyThrows
     public void unregisterAll() {
         for (ModuleInfo<Object> moduleInfo : moduleInfoMap.values()) {
-            HandlerList.unregisterAll(moduleInfo.getPlugin());
+            final Class<?> aClass = moduleInfo.getModule().getClass();
+            for (Field declaredField : aClass.getDeclaredFields()) {
+                if (declaredField.getDeclaredAnnotation(EpsilonConfiguration.class) != null) {
+                    declaredField.setAccessible(true);
+                    ConfigurationLoader.save(Core.getInstance(), moduleInfo.getModule(), declaredField.get(moduleInfo.getModule()));
+                }
+            }
+
+
+            HandlerList.unregisterAll(moduleInfo.getPlugin()); // listeners
         }
         
         moduleInfoMap.clear();

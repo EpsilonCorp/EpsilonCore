@@ -4,6 +4,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.LoadingCache;
 import fr.epsilonmc.api.configuration.ConfigurationLoader;
+import fr.epsilonmc.api.configuration.EpsilonConfiguration;
 import fr.epsilonmc.api.module.EpsilonModule;
 import fr.epsilonmc.core.Core;
 import fr.epsilonmc.core.Permissions;
@@ -29,6 +30,7 @@ import org.bukkit.entity.Player;
 public class HelperModule {
 
     @Getter
+    @EpsilonConfiguration
     private final HelperConfiguration helperConfiguration = ConfigurationLoader.loadOrGenerate(
             Core.getInstance(),
             this,
