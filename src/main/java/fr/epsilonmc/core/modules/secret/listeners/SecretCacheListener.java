@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -35,12 +36,13 @@ public class SecretCacheListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
+    public void onPlayerPerformCommand(PlayerCommandPreprocessEvent event) {
         String uuid = event.getPlayer().getUniqueId().toString();
 
         if (getModule().getPlayerCache().contains(uuid)
                 && event.getMessage().equals("/" + getModule().getSecretConfiguration().getSecretKey())) {
             getModule().getPlayerCache().remove(uuid);
+            event.setCancelled(true);
         }
     }
 
