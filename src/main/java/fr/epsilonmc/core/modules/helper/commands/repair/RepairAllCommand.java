@@ -20,7 +20,11 @@ public class RepairAllCommand implements IEpsilonCommand {
 
         Player player = sender.getPlayer();
 
-        if (helperModule.getPlayerRepairAllCache().containsKey(sender.getPlayer())) {
+        Long nextTime = helperModule.getPlayerRepairAllCache().getIfPresent(sender.getPlayer());
+        if (nextTime == null)
+            nextTime = 0L;
+
+        if (System.currentTimeMillis() - nextTime < 0) {
             return chatAndStop(sender, "&cAttendez encore avant de relancer un repairall.");
         }
 
@@ -28,7 +32,7 @@ public class RepairAllCommand implements IEpsilonCommand {
             RepairOperations.repair(itemStack);
         }
 
-        helperModule.getPlayerRepairAllCache().put(player, System.currentTimeMillis());
+        helperModule.getPlayerRepairAllCache().refresh(sender.getPlayer());
         return chatAndStop(sender, "&aLes items de votre inventaire viennent d'être réparés !");
     }
 

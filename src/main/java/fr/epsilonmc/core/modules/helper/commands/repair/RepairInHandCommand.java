@@ -22,7 +22,11 @@ public class RepairInHandCommand implements IEpsilonCommand {
         Player player = sender.getPlayer();
         ItemStack itemStack = player.getItemInHand();
 
-        if (helperModule.getPlayerRepairCache().containsKey(sender.getPlayer())) {
+        Long nextTime = helperModule.getPlayerRepairCache().getIfPresent(sender.getPlayer());
+        if (nextTime == null)
+            nextTime = 0L;
+
+        if (System.currentTimeMillis() - nextTime < 0) {
             return chatAndStop(sender, "&cAttendez encore avant de relancer un repair.");
         }
 
@@ -30,7 +34,7 @@ public class RepairInHandCommand implements IEpsilonCommand {
             return chatAndStop(sender, "&cCet item n'est pas réparable.");
         }
 
-        helperModule.getPlayerRepairCache().put(player, System.currentTimeMillis());
+        helperModule.getPlayerRepairCache().refresh(sender.getPlayer());
         return chatAndStop(sender, "&aL'item dans votre main vient d'être réparé !");
     }
 
