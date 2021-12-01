@@ -2,30 +2,27 @@ package fr.epsilonmc.core.modules.death;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
 import fr.epsilonmc.api.external.ItemBuilder;
-import fr.epsilonmc.core.Core;
-import fr.epsilonmc.core.Permissions;
 import fr.epsilonmc.core.Variables;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
+import fr.epsilonmc.mock.core.CoreMock;
 import org.bukkit.Material;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.junit.jupiter.api.*;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestKillTracker {
 
-    private Core core;
+    private CoreMock coreMock;
 
     @BeforeAll
     public void setUp() {
         MockBukkit.mock();
-        core = MockBukkit.load(Core.class);
+        coreMock = MockBukkit.load(CoreMock.class);
     }
 
     @Test
@@ -47,7 +44,7 @@ public class TestKillTracker {
                 0,
                 ""
         );
-        core.getServer().getPluginManager().callEvent(playerDeathEvent);
+        coreMock.getServer().getPluginManager().callEvent(playerDeathEvent);
 
         assertEquals(Variables.DEATH_KILLS_COUNT + 3, playerDeathEvent.getEntity().getKiller().getItemInHand().getItemMeta().getLore().get(0));
     }

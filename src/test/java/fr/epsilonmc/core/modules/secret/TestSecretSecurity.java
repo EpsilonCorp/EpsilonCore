@@ -3,7 +3,7 @@ package fr.epsilonmc.core.modules.secret;
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
 import fr.epsilonmc.api.module.ModuleRegistry;
-import fr.epsilonmc.core.Core;
+import fr.epsilonmc.mock.core.CoreMock;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.PluginManager;
@@ -15,12 +15,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestSecretSecurity {
 
     private ServerMock server;
-    private Core core;
+    private CoreMock coreMock;
 
     @BeforeAll
     public void setUp() {
         server = MockBukkit.mock();
-        core = MockBukkit.load(Core.class);
+        coreMock = MockBukkit.load(CoreMock.class);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class TestSecretSecurity {
     public void testSecretSecurity() {
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
         SecretModule secretModule = ModuleRegistry.getInstance().getModule(SecretModule.class).getModule();
-        PluginManager pluginManager = core.getServer().getPluginManager();
+        PluginManager pluginManager = coreMock.getServer().getPluginManager();
 
         secretModule.getPlayerCache().add(epsilonPlayerMock.getUniqueId().toString());
 

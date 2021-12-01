@@ -2,7 +2,7 @@ package fr.epsilonmc.core.modules.exp;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
-import fr.epsilonmc.core.Core;
+import fr.epsilonmc.mock.core.CoreMock;
 import fr.epsilonmc.core.Permissions;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import org.bukkit.event.player.PlayerExpChangeEvent;
@@ -15,20 +15,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestExp {
 
     private ServerMock server;
-    private Core core;
+    private CoreMock coreMock;
 
     @BeforeAll
     public void setUp() {
         server = MockBukkit.mock();
-        core = MockBukkit.load(Core.class);
+        coreMock = MockBukkit.load(CoreMock.class);
     }
 
     @Test
     @DisplayName("Test if exp multiplier works fine")
     public void testExpMultiplier() {
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
-        epsilonPlayerMock.addAttachment(core, Permissions.EXP_MULTIPLIER_PATTERN + "79", true);
-        PluginManager pluginManager = core.getServer().getPluginManager();
+        epsilonPlayerMock.addAttachment(coreMock, Permissions.EXP_MULTIPLIER_PATTERN + "79", true);
+        PluginManager pluginManager = coreMock.getServer().getPluginManager();
 
         PlayerExpChangeEvent playerExpChangeEvent = new PlayerExpChangeEvent(epsilonPlayerMock, 23);
         pluginManager.callEvent(playerExpChangeEvent);

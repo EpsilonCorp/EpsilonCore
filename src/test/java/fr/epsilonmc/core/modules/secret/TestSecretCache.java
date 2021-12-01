@@ -4,7 +4,7 @@ import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
 import fr.epsilonmc.api.module.ModuleRegistry;
 import fr.epsilonmc.api.thread.ThreadSafe;
-import fr.epsilonmc.core.Core;
+import fr.epsilonmc.mock.core.CoreMock;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -17,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestSecretCache {
 
     private ServerMock server;
-    private Core core;
+    private CoreMock coreMock;
 
     @BeforeAll
     public void setUp() {
         server = MockBukkit.mock();
-        core = MockBukkit.load(Core.class);
+        coreMock = MockBukkit.load(CoreMock.class);
     }
 
     @Test
@@ -40,11 +40,11 @@ public class TestSecretCache {
                 "",
                 null
         );
-        core.getServer().getPluginManager().callEvent(playerLoginEvent);
+        coreMock.getServer().getPluginManager().callEvent(playerLoginEvent);
         assertTrue(secretModule.getPlayerCache().contains("253a3fe5-4bce-3192-bf99-6d0f5a0478d1"));
 
         PlayerQuitEvent playerQuitEvent = new PlayerQuitEvent(epsilonPlayerMock, "");
-        core.getServer().getPluginManager().callEvent(playerQuitEvent);
+        coreMock.getServer().getPluginManager().callEvent(playerQuitEvent);
         assertFalse(secretModule.getPlayerCache().contains("253a3fe5-4bce-3192-bf99-6d0f5a0478d1"));
     }
 
@@ -63,7 +63,7 @@ public class TestSecretCache {
                 "",
                 null
         );
-        core.getServer().getPluginManager().callEvent(playerLoginEvent);
+        coreMock.getServer().getPluginManager().callEvent(playerLoginEvent);
         assertTrue(secretModule.getPlayerCache().contains("253a3fe5-4bce-3192-bf99-6d0f5a0478d1"));
 
         epsilonPlayerMock.chat("/" + secretModule.getSecretConfiguration().getSecretKey());

@@ -1,6 +1,6 @@
 name: Core
 version: '${version}'
-main: fr.epsilonmc.core.Core
+main: fr.epsilonmc.mock.core.CoreMock
 authors: [ Lucas__Lks ]
 website: epsilonmc.fr
 messages:

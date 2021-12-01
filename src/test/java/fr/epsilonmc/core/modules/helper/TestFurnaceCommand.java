@@ -1,8 +1,7 @@
 package fr.epsilonmc.core.modules.helper;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
-import fr.epsilonmc.api.io.ChatOperations;
-import fr.epsilonmc.core.Core;
+import fr.epsilonmc.mock.core.CoreMock;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -13,19 +12,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestFurnaceCommand {
 
-    private Core core;
+    private CoreMock coreMock;
 
     @BeforeAll
     public void setUp() {
         MockBukkit.mock();
-        core = MockBukkit.load(Core.class);
+        coreMock = MockBukkit.load(CoreMock.class);
     }
 
     @Test
     @DisplayName("Test if furnace command works fine")
     public void testFurnaceCommand() {
         EpsilonPlayerMock epsilonPlayerMock = new EpsilonPlayerMock("Lucas__Lks");
-        epsilonPlayerMock.addAttachment(core, "core.helper.furnace", true);
+        epsilonPlayerMock.addAttachment(coreMock, "core.helper.furnace", true);
 
         epsilonPlayerMock.setItemInHand(new ItemStack(Material.REDSTONE_ORE));
         epsilonPlayerMock.performCommand("furnace");

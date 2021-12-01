@@ -3,8 +3,8 @@ package fr.epsilonmc.core.modules.death;
 import be.seeseemelk.mockbukkit.MockBukkit;
 import fr.epsilonmc.api.external.ItemBuilder;
 import fr.epsilonmc.api.io.ChatOperations;
-import fr.epsilonmc.core.Core;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
+import fr.epsilonmc.mock.core.CoreMock;
 import org.bukkit.Material;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
@@ -17,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestDeathMessages {
 
-    private Core core;
+    private CoreMock coreMock;
 
     @BeforeAll
     public void setUp() {
         MockBukkit.mock();
-        core = MockBukkit.load(Core.class);
+        coreMock = MockBukkit.load(CoreMock.class);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class TestDeathMessages {
                 0,
                 ""
         );
-        core.getServer().getPluginManager().callEvent(playerDeathEvent);
+        coreMock.getServer().getPluginManager().callEvent(playerDeathEvent);
 
         assertEquals(
                 ChatOperations.translateColorCode(
@@ -60,7 +60,7 @@ public class TestDeathMessages {
                 0,
                 ""
         );
-        core.getServer().getPluginManager().callEvent(playerDeathEvent);
+        coreMock.getServer().getPluginManager().callEvent(playerDeathEvent);
 
         assertEquals(
                 ChatOperations.translateColorCode(
@@ -88,7 +88,7 @@ public class TestDeathMessages {
                 0,
                 ""
         );
-        core.getServer().getPluginManager().callEvent(playerDeathEvent);
+        coreMock.getServer().getPluginManager().callEvent(playerDeathEvent);
 
         assertEquals(
                 ChatOperations.translateColorCode(

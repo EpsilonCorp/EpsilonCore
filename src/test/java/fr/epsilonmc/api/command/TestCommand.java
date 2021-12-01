@@ -1,10 +1,9 @@
 package fr.epsilonmc.api.command;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
-import be.seeseemelk.mockbukkit.ServerMock;
 import fr.epsilonmc.api.module.ModuleRegistry;
-import fr.epsilonmc.core.Core;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
+import fr.epsilonmc.mock.core.CoreMock;
 import fr.epsilonmc.mock.core.modules.test.TestModule;
 import org.junit.jupiter.api.*;
 
@@ -13,13 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestCommand {
 
-    private ServerMock server;
-    private Core core;
+    private CoreMock core;
 
     @BeforeAll
     public void setUp() {
-        server = MockBukkit.mock();
-        core = MockBukkit.load(Core.class);
+        MockBukkit.mock();
+        core = MockBukkit.load(CoreMock.class);
     }
 
     @Test

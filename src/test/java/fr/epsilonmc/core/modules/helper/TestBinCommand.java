@@ -2,7 +2,7 @@ package fr.epsilonmc.core.modules.helper;
 
 import be.seeseemelk.mockbukkit.MockBukkit;
 import fr.epsilonmc.api.io.ChatOperations;
-import fr.epsilonmc.core.Core;
+import fr.epsilonmc.mock.core.CoreMock;
 import fr.epsilonmc.mock.bukkit.EpsilonPlayerMock;
 import org.junit.jupiter.api.*;
 
@@ -14,7 +14,7 @@ public class TestBinCommand {
     @BeforeAll
     public void setUp() {
         MockBukkit.mock();
-        MockBukkit.load(Core.class);
+        MockBukkit.load(CoreMock.class);
     }
 
     @Test
