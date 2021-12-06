@@ -6,7 +6,8 @@ import fr.epsilonmc.core.modules.prevent.listeners.ExploitFixerListener;
 @EpsilonModule(
         name = "prevent",
         listeners = {
-                ExploitFixerListener.class
+                ExploitFixerListener.class,
+                ReserveFixListener.class,
         })
 public class PreventModule {
 }
