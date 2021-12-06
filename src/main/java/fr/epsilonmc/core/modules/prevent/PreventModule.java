@@ -1,10 +1,7 @@
 package fr.epsilonmc.core.modules.prevent;
 
 import fr.epsilonmc.api.module.EpsilonModule;
-import fr.epsilonmc.core.modules.prevent.listeners.ExploitFixerListener;
-import fr.epsilonmc.core.modules.prevent.listeners.NotAllowedEnchantmentsListener;
-import fr.epsilonmc.core.modules.prevent.listeners.ReserveFixListener;
-import fr.epsilonmc.core.modules.prevent.listeners.WitherSpawnPreventListener;
+import fr.epsilonmc.core.modules.prevent.listeners.*;
 import lombok.Getter;
 import org.bukkit.enchantments.Enchantment;
 
@@ -14,7 +11,8 @@ import org.bukkit.enchantments.Enchantment;
                 ExploitFixerListener.class,
                 ReserveFixListener.class,
                 WitherSpawnPreventListener.class,
-                NotAllowedEnchantmentsListener.class
+                NotAllowedEnchantmentsListener.class,
+                BowPreventListener.class
         })
 public class PreventModule {
 
