@@ -47,15 +47,6 @@ public class ModuleRegistry {
     @SneakyThrows
     public void unregisterAll() {
         for (ModuleInfo<Object> moduleInfo : moduleInfoMap.values()) {
-            final Class<?> aClass = moduleInfo.getModule().getClass();
-            for (Field declaredField : aClass.getDeclaredFields()) {
-                if (declaredField.getDeclaredAnnotation(EpsilonConfiguration.class) != null) {
-                    declaredField.setAccessible(true);
-                    ConfigurationLoader.save(Core.getInstance(), moduleInfo.getModule(), declaredField.get(moduleInfo.getModule()));
-                }
-            }
-
-
             HandlerList.unregisterAll(moduleInfo.getPlugin()); // listeners
         }
         

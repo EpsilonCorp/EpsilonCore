@@ -20,7 +20,9 @@ public class ConfigurationLoader {
         File moduleFileConfiguration = new File(dataFolder, epsilonModule.name() + ".json");
 
         if (generateFiles(dataFolder, moduleFileConfiguration)) {
-            return configurationClass.newInstance();
+            T configuration = configurationClass.newInstance();
+            save(plugin, module, configuration);
+            return configuration;
         }
 
         BufferedReader configurationBufferedReader = FileOperations.getReader(moduleFileConfiguration);
