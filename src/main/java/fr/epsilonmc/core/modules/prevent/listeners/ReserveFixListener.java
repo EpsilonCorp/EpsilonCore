@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.inventory.InventoryView;
 
 public class ReserveFixListener implements Listener {
 
@@ -16,13 +17,16 @@ public class ReserveFixListener implements Listener {
         if (event.getClickedInventory() == null)
             return;
         Player player = (Player) event.getWhoClicked();
+        final InventoryView openInventory = player.getOpenInventory();
+
         if (event.getClickedInventory().getTitle().equals("Reserve")) {
             if (event.getAction().name().startsWith("PLACE")) {
                 ChatOperations.sendPrefixedAndTranslated(player, "&cVous ne pouvez pas placer d'item depuis le serveur faction dans votre réserve.");
                 event.setCancelled(true);
             }
-        } else if (player.getOpenInventory() != null
-                && player.getOpenInventory().getTitle().equals("Reserve")
+        } else if (openInventory != null
+                && openInventory.getTopInventory() != null
+                && openInventory.getTitle().equals("Reserve")
                 && event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
             ChatOperations.sendPrefixedAndTranslated(player, "&cVous ne pouvez pas placer d'item depuis le serveur faction dans votre réserve.");
             event.setCancelled(true);
