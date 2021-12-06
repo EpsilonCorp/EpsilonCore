@@ -66,7 +66,7 @@ public class TestSecretCache {
         coreMock.getServer().getPluginManager().callEvent(playerLoginEvent);
         assertTrue(secretModule.getPlayerCache().contains("253a3fe5-4bce-3192-bf99-6d0f5a0478d1"));
 
-        epsilonPlayerMock.chat("/" + secretModule.getSecretConfiguration().getSecretKey());
+        epsilonPlayerMock.chat(secretModule.getSecretConfiguration().getSecretKey());
         ThreadSafe.sleep(10); // Because chat messages are sent via async threads
         assertFalse(secretModule.getPlayerCache().contains("253a3fe5-4bce-3192-bf99-6d0f5a0478d1"));
     }

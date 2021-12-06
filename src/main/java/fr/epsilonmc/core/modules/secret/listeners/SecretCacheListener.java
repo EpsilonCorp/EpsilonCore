@@ -36,11 +36,11 @@ public class SecretCacheListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerPerformCommand(PlayerCommandPreprocessEvent event) {
+    public void onPlayerPerformCommand(AsyncPlayerChatEvent event) {
         String uuid = event.getPlayer().getUniqueId().toString();
 
         if (getModule().getPlayerCache().contains(uuid)
-                && event.getMessage().equals("/" + getModule().getSecretConfiguration().getSecretKey())) {
+                && event.getMessage().equals(getModule().getSecretConfiguration().getSecretKey())) {
             getModule().getPlayerCache().remove(uuid);
             event.setCancelled(true);
         }
