@@ -16,11 +16,13 @@ repositories {
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
 
+    maven { url "https://maven.enginehub.org/repo/" }
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     implementation files('libs/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar')
+    implementation 'com.sk89q.worldguard:worldguard-bukkit:6.1'
     implementation 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
