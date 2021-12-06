@@ -52,7 +52,7 @@ public class EpsilonPlayerMock extends PlayerMock {
     @Override
     public void chat(String msg) {
         AsyncPlayerChatEvent eventAsync = new AsyncPlayerChatEvent(false, this, msg, Collections.emptySet());
-        PlayerChatEvent eventSync = new PlayerChatEvent(this, msg);
+        PlayerChatEvent eventSync = new PlayerChatEvent(this, msg, "", Collections.emptySet());
 
         Bukkit.getPluginManager().callEvent(eventAsync);
         Bukkit.getPluginManager().callEvent(eventSync);
